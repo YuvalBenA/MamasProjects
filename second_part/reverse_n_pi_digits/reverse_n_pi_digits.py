@@ -1,10 +1,13 @@
-import math
+from mpmath import mp
 
 
 def reverse_n_pi_digits(number: int) -> str:
-    revers_pi = str(math.pi)[0: number + 1]
-    revers_pi = revers_pi.replace('.', '')
+    mp.dps = 1000
+    revers_pi = str(mp.pi)[0:number+1].replace(".","")
     return revers_pi[::-1]
 
 
-print(reverse_n_pi_digits(7))
+print(reverse_n_pi_digits(999))
+
+mp.dps = 1000  # set number of digits
+
