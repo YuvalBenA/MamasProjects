@@ -9,5 +9,5 @@ def reverse_n_pi_digits(number: int) -> str:
 
 print(reverse_n_pi_digits(999))
 
-mp.dps = 1000  # set number of digits
+
 
