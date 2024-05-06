@@ -8,11 +8,6 @@ namespace OopLinkedList
     {
         private Node Head { get; set; }
 
-
-        public LinkedList()
-        {
-            Head = new Node();
-        }
         public LinkedList(Node head)
         {
             Head = head;
@@ -45,8 +40,8 @@ namespace OopLinkedList
         public int Pop()
         {
             Node copy = Head;
-            LinkedList cop = new LinkedList();
-            cop.Head.Value = copy.Value;
+            Node newHead = new Node(copy.Value);
+            LinkedList cop = new LinkedList(newHead);
             if (copy.Next != null)
             {
                 copy = copy.Next;
@@ -69,7 +64,7 @@ namespace OopLinkedList
             }
             else
             {
-                Head = new Node();
+                Head = null;
                 return copy.Value;
             }
         }
@@ -77,12 +72,19 @@ namespace OopLinkedList
         public void PrintList()
         {
             Node copy = Head;
-            while (copy.Next !=null)
+            if (Head != null)
             {
+                while (copy.Next != null)
+                {
+                    Console.WriteLine(copy.Value);
+                    copy = copy.Next;
+                }
                 Console.WriteLine(copy.Value);
-                copy = copy.Next;
             }
-            Console.WriteLine(copy.Value);
+            else
+            {
+                Console.WriteLine("Empty list.");
+            }
         }
     }
 }

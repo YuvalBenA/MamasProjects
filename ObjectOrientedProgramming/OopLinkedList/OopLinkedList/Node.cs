@@ -9,12 +9,6 @@ namespace OopLinkedList
         public int Value { get; set; }
         public Node Next { get; set; }
 
-        public Node()
-        {
-            Value = default;
-            Next = null;
-        }
-
         public Node(int value)
         {
             Value = value;
