@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OopLinkedList", "OopLinkedList\OopLinkedList.csproj", "{787F221E-4EE0-4BFC-86CD-F1F6AF4C01F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{787F221E-4EE0-4BFC-86CD-F1F6AF4C01F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787F221E-4EE0-4BFC-86CD-F1F6AF4C01F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787F221E-4EE0-4BFC-86CD-F1F6AF4C01F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787F221E-4EE0-4BFC-86CD-F1F6AF4C01F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B6D61DC-F691-418D-9CFC-A68558F64A51}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\bin\Debug\netcoreapp3.1\OopLinkedList.exe
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\bin\Debug\netcoreapp3.1\OopLinkedList.deps.json
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\bin\Debug\netcoreapp3.1\OopLinkedList.runtimeconfig.json
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\bin\Debug\netcoreapp3.1\OopLinkedList.runtimeconfig.dev.json
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\bin\Debug\netcoreapp3.1\OopLinkedList.dll
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\bin\Debug\netcoreapp3.1\OopLinkedList.pdb
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\obj\Debug\netcoreapp3.1\OopLinkedList.csprojAssemblyReference.cache
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\obj\Debug\netcoreapp3.1\OopLinkedList.AssemblyInfoInputs.cache
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\obj\Debug\netcoreapp3.1\OopLinkedList.AssemblyInfo.cs
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\obj\Debug\netcoreapp3.1\OopLinkedList.csproj.CoreCompileInputs.cache
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\obj\Debug\netcoreapp3.1\OopLinkedList.dll
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\obj\Debug\netcoreapp3.1\OopLinkedList.pdb
+C:\MamasProjects\ObjectOrientedProgramming\OopLinkedList\OopLinkedList\obj\Debug\netcoreapp3.1\OopLinkedList.genruntimeconfig.cache
