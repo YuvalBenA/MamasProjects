@@ -13,23 +13,30 @@ namespace OopLinkedList
             Head = head;
         }
 
+        public LinkedList()
+        {
+            Head = null;
+        }
+
         public void Append(int value)
         {
             Node append = new Node(value);
-            Node lastNode = GetLastNode();
-            lastNode.Next = append;
+            if (Head != null)
+            {
+                Node lastNode = Head;
+                while (lastNode.Next != null)
+                {
+                    lastNode = lastNode.Next;
+                }
+                lastNode.Next = append;
+            }
+            else
+            {
+                Head = append;
+            }
         }
 
-        public Node GetLastNode()
-        {
-            Node copy = Head;
-            while (copy.Next != null)
-            {
-                copy = copy.Next;
-            }
-            return copy;
-        }
-        
+
         public void Prepend(int value)
         {
             Node copy = Head;
@@ -39,52 +46,137 @@ namespace OopLinkedList
 
         public int Pop()
         {
-            Node copy = Head;
-            Node newHead = new Node(copy.Value);
-            LinkedList cop = new LinkedList(newHead);
-            if (copy.Next != null)
+            if (Head != null)
             {
-                copy = copy.Next;
-                if (copy.Next != null)
+                Node copyList = Head;
+                Node newHead = new Node(copyList.Value);
+                LinkedList listAfterChanges = new LinkedList(newHead);
+                if (copyList.Next != null)
                 {
-                    while (copy.Next.Next != null)
+                    copyList = copyList.Next;
+                    if (copyList.Next != null)
                     {
-                        cop.Append(copy.Value);
-                        copy = copy.Next;
+                        while (copyList.Next != null)
+                        {
+                            listAfterChanges.Append(copyList.Value);
+                            copyList = copyList.Next;
+                        }
+                        Head = listAfterChanges.Head;
+                        return copyList.Value;
                     }
-                    cop.Append(copy.Value);
-                    Head = cop.Head;
-                    return copy.Next.Value;
+                    Head = listAfterChanges.Head;
+                    return copyList.Value;
                 }
-                else
+                Head = null;
+                return copyList.Value;
+            }
+            Console.WriteLine("Empty List!");
+            return -1;
+        }
+
+        public int Unqueue()
+        {
+            if (Head != null)
+            {
+                Node copyList = Head;
+                if (copyList.Next != null)
                 {
-                    Head = cop.Head;
-                    return copy.Value;
+                    int firstNodeValue = copyList.Value;
+                    Node newHead = copyList.Next;
+                    Head = newHead;
+                    return firstNodeValue;
                 }
+                Head = null;
+                return copyList.Value;
+            }
+            Console.WriteLine("Empty List!");
+            return -1;
+        }
+
+
+        public void PrintLinkedList()
+        {
+            if (Head != null)
+            {
+                Node copyList = Head;
+                while (copyList.Next != null)
+                {
+                    Console.WriteLine(copyList.Value);
+                    copyList = copyList.Next;
+                }
+                Console.WriteLine(copyList.Value);
             }
             else
             {
-                Head = null;
-                return copy.Value;
+                Console.WriteLine("Empty List.");
             }
         }
 
-        public void PrintList()
+        public List<int> ToList()
         {
-            Node copy = Head;
+            Node copyList = Head;
+            List<int> copyValues = new List<int>();
             if (Head != null)
             {
-                while (copy.Next != null)
+                while (copyList.Next != null)
                 {
-                    Console.WriteLine(copy.Value);
-                    copy = copy.Next;
+                    copyValues.Add(copyList.Value);
+                    copyList = copyList.Next;
                 }
-                Console.WriteLine(copy.Value);
+                copyValues.Add(copyList.Value);
             }
-            else
-            {
-                Console.WriteLine("Empty list.");
-            }
+            return copyValues;
         }
+
+        public bool IsCircular()
+        {
+            if (Head != null)
+            {
+                Node copyList = Head;
+                while (copyList.Next != null)
+                {
+                    if (copyList.Next == Head)
+                        return true;
+                    copyList = copyList.Next;
+                }
+                return false;
+            }
+            Console.WriteLine("Empty List!");
+            return false;
+        }
+
+        public void Sort()
+        {
+            LinkedList copyList = new LinkedList(Head);
+            List<int> helpSort = copyList.ToList();
+            helpSort.Sort();
+            Node newHead = new Node(helpSort[0]);
+            LinkedList sortedList = new LinkedList(newHead);
+            int countItems = 1;
+            while (countItems < helpSort.Count)
+            {
+                sortedList.Append(helpSort[countItems]);
+                countItems = countItems + 1;
+            }
+            Head = newHead;
+        }
+
+        public int GetMaxNode()
+        {
+            LinkedList copyList = new LinkedList(Head);
+            List<int> sortedValues = copyList.ToList();
+            sortedValues.Sort();
+            return sortedValues[sortedValues.Count - 1];
+        }
+
+        public int GetMinNode()
+        {
+            LinkedList copyList = new LinkedList(Head);
+            List<int> sortedValues = copyList.ToList();
+            sortedValues.Sort();
+            return sortedValues[0];
+        }
+
+
     }
 }
