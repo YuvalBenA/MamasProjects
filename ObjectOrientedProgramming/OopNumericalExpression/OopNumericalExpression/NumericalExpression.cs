@@ -13,7 +13,7 @@ namespace OopNumericalExpression
             Number = number;
         }
 
-        public string ToString()
+        public override string ToString()
         {
 
             long copyNumber = Number;
@@ -52,11 +52,9 @@ namespace OopNumericalExpression
                             return WriteNumber(number / 1000000) + "million " + WriteNumber(number % (number / 1000000 * 1000000));
                         }
                         return WriteNumber(number / 1000) + "thousand " + WriteNumber(number % (number / 1000 * 1000));
-
                     }
                     return WriteNumber(number / 100) + "hundred " + WriteNumber(number % (number / 100 * 100));
                 }
-
                 return roundNumbersTillOneHundred[number / 10] + WriteNumber(number % 10);
             }      
             return numbersTillTwenty[number];
