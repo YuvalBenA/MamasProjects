@@ -7,8 +7,9 @@ namespace OopNumericalExpression
     {
         static void Main(string[] args)
         {
-            NumericalExpression num = new NumericalExpression(12355);
+            NumericalExpression num = new NumericalExpression(111111111111);
             Console.WriteLine(num.ToString());
+            
 
         }
     }
