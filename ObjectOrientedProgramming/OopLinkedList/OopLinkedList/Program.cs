@@ -13,6 +13,7 @@ namespace OopLinkedList
             Node t3 = new Node(17, t2);
             Node t4 = new Node(7, t3);
             LinkedList test = new LinkedList(t4);
+            test.PrintLinkedList();
         }
     }
 }

@@ -7,15 +7,47 @@ namespace OopLinkedList
     class LinkedList
     {
         private Node Head { get; set; }
+        private Node Last { get; set; }
+
 
         public LinkedList(Node head)
         {
             Head = head;
+            Node lastNode = Head;
+            if (Head.Next != null && IsCircular()==false)
+            {
+                while (lastNode.Next != null)
+                {
+                    lastNode = lastNode.Next;
+                }
+                Last = lastNode;
+            }
+            else if (IsCircular()== false)
+            {
+                Last = null;
+                Head.Next = Last;
+            }
+            else
+            {
+                Last = null;
+            }
         }
 
         public LinkedList()
         {
             Head = null;
+            Last = null;
+        }
+
+
+        public Node GetLast()
+        {
+            Node lastNode = Head;
+            while (lastNode.Next != null)
+            {
+                lastNode = lastNode.Next;
+            }
+            return lastNode;
         }
 
         public void Append(int value)
@@ -23,12 +55,16 @@ namespace OopLinkedList
             Node append = new Node(value);
             if (Head != null)
             {
-                Node lastNode = Head;
-                while (lastNode.Next != null)
+                if (Head.Next == null)
                 {
-                    lastNode = lastNode.Next;
+                    Last = append;
+                    Head.Next = Last;
                 }
-                lastNode.Next = append;
+                else
+                {
+                    Last.Next = append;
+                    Last = Last.Next;
+                }
             }
             else
             {
@@ -42,36 +78,37 @@ namespace OopLinkedList
             Node copy = Head;
             Node newHead = new Node(value, copy);
             Head = newHead;
+            Last = GetLast();
         }
 
         public int Pop()
         {
+            int lastNodeValue = default;
             if (Head != null)
             {
-                Node copyList = Head;
-                Node newHead = new Node(copyList.Value);
-                LinkedList listAfterChanges = new LinkedList(newHead);
-                if (copyList.Next != null)
+                if (Head.Next == null)
                 {
-                    copyList = copyList.Next;
-                    if (copyList.Next != null)
-                    {
-                        while (copyList.Next != null)
-                        {
-                            listAfterChanges.Append(copyList.Value);
-                            copyList = copyList.Next;
-                        }
-                        Head = listAfterChanges.Head;
-                        return copyList.Value;
-                    }
-                    Head = listAfterChanges.Head;
-                    return copyList.Value;
+                    lastNodeValue = Head.Value;
+                    Last = null;
+                    Head = null;
                 }
-                Head = null;
-                return copyList.Value;
+                else
+                {
+                    lastNodeValue = Last.Value;
+                    Node lastNode = Head;
+                    while (lastNode.Next.Next != null)
+                    {
+                        lastNode = lastNode.Next;
+                    }
+                    lastNode.Next = null;
+                    Last = lastNode;
+                }
             }
-            Console.WriteLine("Empty List!");
-            return -1;
+            else
+            {
+                Console.WriteLine("Empty List!");
+            }
+            return lastNodeValue;
         }
 
         public int Unqueue()
@@ -84,9 +121,11 @@ namespace OopLinkedList
                     int firstNodeValue = copyList.Value;
                     Node newHead = copyList.Next;
                     Head = newHead;
+                    Last = GetLast();
                     return firstNodeValue;
                 }
                 Head = null;
+                Last = null;
                 return copyList.Value;
             }
             Console.WriteLine("Empty List!");
@@ -156,9 +195,10 @@ namespace OopLinkedList
             while (countItems < helpSort.Count)
             {
                 sortedList.Append(helpSort[countItems]);
-                countItems = countItems + 1;
+                countItems += 1;
             }
             Head = newHead;
+            Last = GetLast();
         }
 
         public int GetMaxNode()
