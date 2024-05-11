@@ -3,12 +3,28 @@ import math
 
 
 def get_numbers() -> list[float]:
-    num = float(input("Enter the first number: "))
+    number = input("Enter the first number: ")
+    if number == '-1':
+        print("The first number can't be -1. Lets start again. \n")
+        return get_numbers()
     numbers = []
-    while num != -1:
-        numbers.append(num)
-        num = float(input("Enter the next number. If you are done enter -1: "))
+    while number != '-1':
+        if is_input_type_float(number):
+            number = float(number)
+            numbers.append(number)
+            number = input("Enter the next number. If you are done enter -1: ")
+        else:
+            print("Input needs to be type float. Lets start again. \n")
+            return get_numbers()
     return numbers
+
+
+def is_input_type_float(received_input: str) -> bool:
+    try:
+        float(received_input)
+    except ValueError:
+        return False
+    return True
 
 
 def numbers_average(numbers: list[float]) -> float:
@@ -60,7 +76,6 @@ def calculate_pearson(numbers: list[float]) -> float:
         number_placement = number_placement + 1
     average_number_placement = number_of_numbers_sum / number_of_numbers
     average_number = numbers_sum / number_of_numbers
-
     number_placement = 1
     placement_number_delta_sum = 0
     placement_delta_times_itself_sum = 0
