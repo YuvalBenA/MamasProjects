@@ -32,6 +32,8 @@ namespace OopNumericalExpression
             }
         }
 
+
+
         public string WriteNumber(long number)
         {
             if (number == 0)
@@ -53,11 +55,11 @@ namespace OopNumericalExpression
                 if (number >= 100)
                 {
                     int numbersLength = (int)(Math.Log10(number)+1);
-                    int myKey = KeyByValue(sizeName, numbersSizeName[numbersLength]);
-                    long firstPart = Convert.ToInt64( Math.Floor((number / Math.Pow(10, myKey))));
+                    int raiseTenBy = KeyByValue(sizeName, numbersSizeName[numbersLength]);
+                    long numbersFirstPart = Convert.ToInt64( Math.Floor((number / Math.Pow(10, raiseTenBy))));
                     string thisSizeName = sizeName[(int)(Math.Log10(number)+1)];
-                    long secondPart = number - Convert.ToInt64(firstPart * Math.Pow(10, myKey));
-                    return WriteNumber(firstPart) + thisSizeName + WriteNumber(secondPart);
+                    long numbersSecondPart = number - Convert.ToInt64(numbersFirstPart * Math.Pow(10, raiseTenBy));
+                    return WriteNumber(numbersFirstPart) + thisSizeName + WriteNumber(numbersSecondPart);
                 }
                 return roundNumbersTillOneHundred[number / 10] + WriteNumber(number % 10);
             }
@@ -90,8 +92,8 @@ namespace OopNumericalExpression
             int countLetters = 0;
             for(long i =0; i<number; i++)
             {
-                NumericalExpression i1 = new NumericalExpression(i);
-                string numberInWords = i1.ToString().Trim();
+                NumericalExpression iAsNumericalExpression = new NumericalExpression(i);
+                string numberInWords = iAsNumericalExpression.ToString().Trim();
                 countLetters += numberInWords.Length;
             }
             return countLetters;
@@ -104,8 +106,8 @@ namespace OopNumericalExpression
             number = number + " ";
             for (long i=0; i<999999999999; i++)
             {
-                NumericalExpression i1 = new NumericalExpression(i);
-                if(i1.ToString()==number)
+                NumericalExpression iAsNumricalExpression = new NumericalExpression(i);
+                if(iAsNumricalExpression.ToString()==number)
                 {
                     return SumLetters(i);
                 }
