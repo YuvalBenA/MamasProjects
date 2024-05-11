@@ -48,18 +48,18 @@ namespace OopNumericalExpression
             {
                 sizeName.Add(i, numbersSizeName[i]);
             }
-            if (number > 20)
+            if (number >= 20)
             {
                 if (number >= 100)
                 {
                     int numbersLength = (int)(Math.Log10(number)+1);
                     int myKey = KeyByValue(sizeName, numbersSizeName[numbersLength]);
-                    long firstPart = Convert.ToInt64(number / Math.Pow(10, myKey));
+                    long firstPart = Convert.ToInt64( Math.Floor((number / Math.Pow(10, myKey))));
                     string thisSizeName = sizeName[(int)(Math.Log10(number)+1)];
                     long secondPart = number - Convert.ToInt64(firstPart * Math.Pow(10, myKey));
                     return WriteNumber(firstPart) + thisSizeName + WriteNumber(secondPart);
                 }
-                return roundNumbersTillOneHundred[number / 10] + numbersTillTwenty[number % 10];
+                return roundNumbersTillOneHundred[number / 10] + WriteNumber(number % 10);
             }
             return numbersTillTwenty[number];
         }
@@ -90,11 +90,28 @@ namespace OopNumericalExpression
             int countLetters = 0;
             for(long i =0; i<number; i++)
             {
-                string numberInWords = number.ToString().Trim();
-                Console.WriteLine(numberInWords);
+                NumericalExpression i1 = new NumericalExpression(i);
+                string numberInWords = i1.ToString().Trim();
                 countLetters += numberInWords.Length;
             }
             return countLetters;
+        }
+
+        public static int SumLetters(string number)
+        {
+            //polymorphism הוא העקרון שמתממש פה כי נותנים שימוש מעט שונה לאותה הפונקצה
+            number = number.ToLower();
+            number = number + " ";
+            for (long i=0; i<999999999999; i++)
+            {
+                NumericalExpression i1 = new NumericalExpression(i);
+                if(i1.ToString()==number)
+                {
+                    return SumLetters(i);
+                }
+            }
+            Console.WriteLine("Number was not found");
+            return -1;
         }
     }
 }
