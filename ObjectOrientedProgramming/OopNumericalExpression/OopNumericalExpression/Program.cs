@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OopNumericalExpression
 {
@@ -6,8 +7,9 @@ namespace OopNumericalExpression
     {
         static void Main(string[] args)
         {
-            NumericalExpression num = new NumericalExpression(111111111111);
+            NumericalExpression num = new NumericalExpression(12355);
             Console.WriteLine(num.ToString());
+
         }
     }
 }

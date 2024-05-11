@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace OopNumericalExpression
 {
     class NumericalExpression
@@ -58,6 +59,11 @@ namespace OopNumericalExpression
                 return roundNumbersTillOneHundred[number / 10] + WriteNumber(number % 10);
             }      
             return numbersTillTwenty[number];
+        }
+
+        public long GetValue()
+        {
+            return Number;
         }
     }
 }
