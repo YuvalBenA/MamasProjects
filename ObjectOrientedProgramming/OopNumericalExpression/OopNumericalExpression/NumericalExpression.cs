@@ -99,21 +99,11 @@ namespace OopNumericalExpression
             return countLetters;
         }
 
-        public static int SumLetters(string number)
+        public static int SumLetters(NumericalExpression number)
         {
-            //polymorphism הוא העקרון שמתממש פה כי נותנים שימוש מעט שונה לאותה הפונקצה
-            number = number.ToLower();
-            number = number + " ";
-            for (long i=0; i<999999999999; i++)
-            {
-                NumericalExpression iAsNumricalExpression = new NumericalExpression(i);
-                if(iAsNumricalExpression.ToString()==number)
-                {
-                    return SumLetters(i);
-                }
-            }
-            Console.WriteLine("Number was not found");
-            return -1;
+            //polymorphism הוא העקרון שמתממש פה כי נותנים שימוש זהה לפונקציה עם חתימה שונה
+            long thisNumber = number.GetValue();
+            return SumLetters(thisNumber);
         }
     }
 }

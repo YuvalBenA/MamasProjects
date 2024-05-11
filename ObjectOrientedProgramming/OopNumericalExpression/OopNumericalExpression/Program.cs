@@ -8,10 +8,6 @@ namespace OopNumericalExpression
         static void Main(string[] args)
         {
             NumericalExpression num = new NumericalExpression(151);
-            Console.WriteLine(num.ToString());
-            
-
-
         }
     }
 }
