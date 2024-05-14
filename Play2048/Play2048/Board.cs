@@ -4,9 +4,11 @@ using System.Text;
 
 namespace Play2048
 {
-    class Board
+    class Board 
     {
         public int[,] Data { get; protected set; }
+
+        public BoardHelpFunctions HelpFunctions = new BoardHelpFunctions();
         public Board()
         {
             Data = new int[4, 4];
@@ -14,14 +16,14 @@ namespace Play2048
         public void RandomFirstPlaces()
         {
             Random placements = new Random();
-            int placedValue = GetValueToAdd();
+            int placedValue = HelpFunctions.GetValueToAdd();
             int xPlace = placements.Next(0, 4);
             int yPlace = placements.Next(0, 4);
             Data[xPlace, yPlace] = placedValue;
             bool secondAdded = false;
             while (!secondAdded)
             {
-                int secondPlacedValue = GetValueToAdd();
+                int secondPlacedValue = HelpFunctions.GetValueToAdd();
                 int secondXPlace = placements.Next(0, 4);
                 int secondYPlace = placements.Next(0, 4);
                 if (secondXPlace != xPlace || secondYPlace != yPlace)
@@ -35,94 +37,92 @@ namespace Play2048
         public int Move(Direction turnsDirection)
         {
             int turnScore = 0;
-            if ((int)turnsDirection < 2)
+            if ((int)turnsDirection == 0 )
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        if (Data[i, j] != default)
-                        {
-                            turnScore+= MoveUpOrDown(i, j, (int)turnsDirection);              
-                        }
-                    }
-                }
+                turnScore = MoveBoardUp();
+            }
+            else if ((int)turnsDirection==1)
+            {
+                turnScore =  MoveBoardDown();
+            }
+            else if ((int)turnsDirection == 2)
+            {
+                turnScore =  MoveBoardLeft();
             }
             else
             {
-                for (int i = 0; i < 4; i++)
+                turnScore = MoveBoardRight();
+            }
+            if(!HelpFunctions.IsFull(Data))
+            {
+                HelpFunctions.RandomAdd(Data);
+            }
+            return turnScore;
+        }
+        public int MoveBoardUp()
+        {
+            int turnScore = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
                 {
-                    for (int j = 0; j < 4; j++)
+                    if (Data[i, j] != default)
                     {
-                        if (Data[i, j] != default)
-                        {
-                            turnScore += MoveLeftOrRight(i, j, (int)turnsDirection);
-                        }
+                        turnScore += MoveUpOrDown(i, j, 0);
                     }
                 }
-            }
-            if(!IsFull())
-            {
-                RandomAdd();
             }
             return turnScore;
         }
 
-        public bool IsFull()
+        public int MoveBoardDown()
         {
+            int turnScore = 0;
+            for (int i = 3; i > -1; i--)
+            {
+                for (int j = 3; j > -1; j--)
+                {
+                    if (Data[i, j] != default)
+                    {
+                        turnScore += MoveUpOrDown(i, j, 1);
+                    }
+                }
+            }
+            return turnScore;
+        }
+
+        public int MoveBoardLeft()
+        {
+            int turnScore = 0;
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    if (Data[i, j] == default)
+                    if (Data[i, j] != default)
                     {
-                        return false;
+                        turnScore += MoveLeftOrRight(i, j, 2);
                     }
                 }
             }
-            return true;
+            return turnScore;
         }
 
-        public bool WinAlready()
+        public int MoveBoardRight()
         {
-            for (int i = 0; i < 4; i++)
+            int turnScore = 0;
+            for (int i = 3; i > -1; i--)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 3; j > -1; j--)
                 {
-                    if (Data[i, j] == 2048)
+                    if (Data[i, j] != default)
                     {
-                        return true;
+                        turnScore += MoveLeftOrRight(i, j, 3);
                     }
                 }
             }
-            return false;
+            return turnScore;
         }
 
-        public int GetValueToAdd()
-        {
-            Random placements = new Random();
-            int randomValue = placements.Next(2, 5);
-            if (randomValue == 3)
-            {
-                return GetValueToAdd();
-            }
-            return randomValue;
-        }
-
-        public void RandomAdd()
-        {
-            Random placements = new Random();
-            int xPlace = placements.Next(0, 4);
-            int yPlace = placements.Next(0, 4);
-            if (Data[xPlace, yPlace] == default)
-            {
-                Data[xPlace, yPlace] = GetValueToAdd();
-            }
-            else
-            {
-                RandomAdd();
-            }
-        }
 
         public int MoveUpOrDown(int xPlace, int yPlace, int direction)
         {

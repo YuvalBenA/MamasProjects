@@ -21,26 +21,24 @@ namespace Play2048
 
         public void Move(Direction direction)
         {
-            switch (CorrentStatus)
+            if (direction != Direction.End)
             {
-                case GameStatus.Lose:
-                    break;
-
-                case GameStatus.Idle:
-                    ScoreCount+= GameBoard.Move(direction);
-                    if(GameBoard.WinAlready())
+                if(CorrentStatus== GameStatus.Idle)
+                {
+                    ScoreCount += GameBoard.Move(direction);
+                    if (GameBoard.HelpFunctions.WinAlready(GameBoard.Data))
                     {
                         CorrentStatus = GameStatus.Win;
                     }
-                    else if(GameBoard.IsFull())
+                    else if (GameBoard.HelpFunctions.IsFull(GameBoard.Data))
                     {
                         CorrentStatus = GameStatus.Lose;
                     }
-                    break;
-
-                case GameStatus.Win:
-                    break;
-
+                }            
+            }
+            else
+            {
+                CorrentStatus = GameStatus.Quit;
             }
         }
         public void PrintBoard()
@@ -49,9 +47,47 @@ namespace Play2048
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    Console.Write(GameBoard.Data[i, j] + " ");
-                }
-                Console.Write("\n");
+                    if (GameBoard.Data[i, j] < 10)
+                    {
+                        if (GameBoard.Data[i, j] != 0)
+                        {
+                            Console.BackgroundColor = ConsoleColor.DarkGreen;
+                            Console.Write(GameBoard.Data[i, j]);
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.Write("    ");
+                        }
+                        else
+                        {
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                            Console.Write(" ");
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.Write("    ");
+                        }
+                    }
+                    else if (GameBoard.Data[i, j] < 100)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.Write(GameBoard.Data[i, j]);
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.Write("   ");
+                    }
+                    else if (GameBoard.Data[i, j] < 1000)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.Write(GameBoard.Data[i, j]);
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.Write("  ");
+                    }
+                    else if (GameBoard.Data[i, j] < 2049)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Magenta;
+                        Console.Write(GameBoard.Data[i, j]);
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.Write(" ");
+                    }
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }           
+                Console.Write("\n \n");
             }
             Console.Write("\n");
         }

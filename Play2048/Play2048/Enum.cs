@@ -9,13 +9,15 @@ namespace Play2048
         Up,
         Down,
         Left,
-        Right
+        Right,
+        End
     }
     enum GameStatus
     {
         Win,
         Lose,
-        Idle
+        Idle,
+        Quit
     }
     class Enum
     {
