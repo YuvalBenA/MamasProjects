@@ -1,0 +1,13 @@
+C:\MamasProjects\Play2048\Play2048\bin\Debug\netcoreapp3.1\Play2048.exe
+C:\MamasProjects\Play2048\Play2048\bin\Debug\netcoreapp3.1\Play2048.deps.json
+C:\MamasProjects\Play2048\Play2048\bin\Debug\netcoreapp3.1\Play2048.runtimeconfig.json
+C:\MamasProjects\Play2048\Play2048\bin\Debug\netcoreapp3.1\Play2048.runtimeconfig.dev.json
+C:\MamasProjects\Play2048\Play2048\bin\Debug\netcoreapp3.1\Play2048.dll
+C:\MamasProjects\Play2048\Play2048\bin\Debug\netcoreapp3.1\Play2048.pdb
+C:\MamasProjects\Play2048\Play2048\obj\Debug\netcoreapp3.1\Play2048.csprojAssemblyReference.cache
+C:\MamasProjects\Play2048\Play2048\obj\Debug\netcoreapp3.1\Play2048.AssemblyInfoInputs.cache
+C:\MamasProjects\Play2048\Play2048\obj\Debug\netcoreapp3.1\Play2048.AssemblyInfo.cs
+C:\MamasProjects\Play2048\Play2048\obj\Debug\netcoreapp3.1\Play2048.csproj.CoreCompileInputs.cache
+C:\MamasProjects\Play2048\Play2048\obj\Debug\netcoreapp3.1\Play2048.dll
+C:\MamasProjects\Play2048\Play2048\obj\Debug\netcoreapp3.1\Play2048.pdb
+C:\MamasProjects\Play2048\Play2048\obj\Debug\netcoreapp3.1\Play2048.genruntimeconfig.cache
